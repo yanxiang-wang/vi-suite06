@@ -534,7 +534,9 @@ def basiccalcapply(self, scene, frames, rtcmds, simnode, curres, pfile):
         reslists.append([str(frame), 'Zone', self.id_data.name, 'Y', ' '.join(['{:.3f}'.format(p[1]) for p in posis])])
         reslists.append([str(frame), 'Zone', self.id_data.name, 'Z', ' '.join(['{:.3f}'.format(p[2]) for p in posis])])
         reslists.append([str(frame), 'Zone', self.id_data.name, 'Areas (m2)', ' '.join(['{:.5f}'.format(ra) for ra in rareas])])
-        
+        reslists.append([str(frame), 'Zone', self.id_data.name, 'Color X', ' '.join(['{:.5f}'.format(ra[0]*1000) for ra in xyzirrad])])
+        reslists.append([str(frame), 'Zone', self.id_data.name, 'Color Y', ' '.join(['{:.5f}'.format(ra[1]*1000) for ra in xyzirrad])])
+        reslists.append([str(frame), 'Zone', self.id_data.name, 'Color Z', ' '.join(['{:.5f}'.format(ra[2]*1000) for ra in xyzirrad])])
         if svp['liparams']['unit'] == 'W/m2 (f)':
             firradbinvals = [self['omin']['firrad{}'.format(frame)] + (self['omax']['firrad{}'.format(frame)] - self['omin']['firrad{}'.format(frame)])/ll * (i + increment) for i in range(ll)]
             self['livires']['valbins'] = firradbinvals
